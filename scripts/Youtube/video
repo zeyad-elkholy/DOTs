@@ -1,0 +1,5 @@
+#!/bin/bash
+choice=$(echo -e "Watch\nDownload" | dmenu -i -p "choose option :  ")
+
+[ $choice = "Watch" ] && /home/zod/scripts/Youtube/Watchyt.sh
+[ $choice = "Download"   ] && /home/zod/scripts/Youtube/downloadyt

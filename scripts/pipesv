@@ -1,0 +1,4 @@
+#!/bin/sh
+sv check pipewire > /dev/null || exit 1
+exec env HOME=/var/run/pipewire chpst -u _pipewire:_pipewire:audio:video dbus-run-session wireplumber
+

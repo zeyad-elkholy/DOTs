@@ -1,0 +1,9 @@
+#!/bin/bash
+choice=$(echo -e "720P\n480P\nPlayList\n Any" | dmenu -i -p "choose option :  ")
+
+
+[ $choice = "720P" ] && st -e yt-dlp -o '/home/zod/Downloads/YouTube/%(channel)s/%(title)s.%(ext)s' -f 22 $(xclip -o)
+[ $choice = "Any" ] && st -e yt-dlp -o '/home/zod/Downloads/YouTube/%(channel)s/%(title)s.%(ext)s' $(xclip -o)
+[ $choice = "480P"   ] && st -e yt-dlp -o '/home/zod/Downloads/YouTube/%(channel)s/%(title)s.%(ext)s' -f 135+140 $(xclip -o)
+[ $choice = "PlayList" ] && st -e  yt-dlp -o "/home/zod/Downloads/YouTube/%(playlist)s/%(title)s.%(ext)s" -f "[height<=480]" $(xclip -o)
+

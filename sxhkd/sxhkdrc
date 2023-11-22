@@ -1,0 +1,19 @@
+super + d
+  dmenu_run
+
+super + Return
+  st
+
+super + a
+  ytfzf -D
+
+super + Print
+  scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png; notify-send "screenshot taken"
+
+super + v
+  /home/zod/scripts/Youtube/video
+
+super + r
+  /home/zod/scripts/quran.sh
+super + w
+  /home/zod/scripts/engvocab.sh
