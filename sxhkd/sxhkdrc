@@ -8,7 +8,7 @@ super + a
   ytfzf -D
 
 super + Print
-  scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png; notify-send "screenshot taken"
+  /home/zod/scripts/screenshot.sh; notify-send "screenshot taken"
 
 super + v
   /home/zod/scripts/Youtube/video
