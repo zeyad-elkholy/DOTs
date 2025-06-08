@@ -1,0 +1,16 @@
+#!/bin/bash
+choice=$(echo -e "720P\n480P\nPlayList\nDrive\n Any\n Segmint" |rofi -dmenu -l 6 -i -p "choose option :  ")
+notpls=$(wl-paste| awk -F'&' '{ for(i=1; i<=NF; i++) { if ($i ~ /v=/) { split($i, a, "="); print "https://www.youtube.com/watch?v="a[2] } } }')
+check_clipboard_for_gdrive_link() {
+  CLIPBOARD_CONTENT=$(wl-paste)
+    if [[ $CLIPBOARD_CONTENT =~ https://drive\.google\.com/ ]]; then
+	st -e yt-dlp -o '/home/zod/Study/sessions/Math\ Mooneeer/%(title)s.%(ext)s' --cookies-from-browser firefox "$(wl-paste)"	
+    fi
+}
+
+[ $choice = "720P" ] && kitty yt-dlp -o '/home/zod/Downloads/YouTube/%(channel)s/%(title)s.%(ext)s' -f "[height<=720]" -R "infinite" "$notpls"
+[ $choice = "Any" ] && kitty yt-dlp -o '/home/zod/Downloads/YouTube/%(channel)s/%(title)s.%(ext)s' -R "infinite" $(wl-paste)
+[ $choice = "480P"   ] && kitty yt-dlp -o '/home/zod/Downloads/YouTube/%(channel)s/%(title)s.%(ext)s' -f "[height<=480]" -R "infinite" $"$notpls"
+[ $choice = "PlayList" ] && kitty  yt-dlp -o "/home/zod/Downloads/YouTube/%(playlist)s/%(title)s.%(ext)s" -f "[height<=720]" -R "infinite"$(wl-paste)
+[ $choice = "Drive" ] && kitty yt-dlp -o '/home/zod/Study/sessions/Math\ Mooneeer/%(title)s.%(ext)s' --cookies-from-browser firefox "$(wl-paste)"	
+[ $choice = "Segmint" ] && /home/zod/scripts/Youtube/segmint.sh 
